@@ -21,6 +21,8 @@ ifeq ($(USE_32_BIT_KEYSTORE), true)
 LOCAL_MULTILIB := 32
 endif
 LOCAL_CFLAGS := -Wall -Wextra -Werror -Wunused
+# Intentional -- 0-size "encrypted" array member of struct blob
+LOCAL_CFLAGS += -Wno-error=array-bounds
 LOCAL_SRC_FILES := keystore.cpp keyblob_utils.cpp operation.cpp auth_token_table.cpp
 LOCAL_SHARED_LIBRARIES := \
 	libbinder \
